@@ -11,10 +11,10 @@ char alphabet;
 
 for (alphabet = 'a'; alphabet <= 'z'; alphabet++)
 {
-putcher(alphabet);
+putchar(alphabet);
 }
 
-putcher('\n');
+putchar('\n');
 
 return (0);
 
