@@ -1,30 +1,24 @@
-#include "main.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 /**
- * rev_string - reverses a string.
- * @s: input string.
- * Return: no return.
+ * main - generates keygen.
+ * Return: 0 Always.
  */
-void rev_string(char *s)
+int main(void)
 {
-	int count = 0, i, j;
-	char *str, temp;
+	int r = 0, c = 0;
+	time_t t;
 
-	while (count >= 0)
+	srand((unsigned int) time(&t));
+	while (c < 2772)
 	{
-		if (s[count] == '\0')
+		r = rand() % 128;
+		if ((c + r) > 2772)
 			break;
-		count++;
+		c = c + r;
+		printf("%c", r);
 	}
-	str = s;
-
-	for (i = 0; i < (count - 1); i++)
-	{
-		for (j = i + 1; j > 0; j--)
-		{
-			temp = *(str + j);
-			*(str + j) = *(str + (j - 1));
-			*(str + (j - 1)) = temp;
-		}
-	}
+	printf("%c\n", (2772 - c));
+	return (0);
 }
