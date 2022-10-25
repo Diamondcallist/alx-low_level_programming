@@ -30,7 +30,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 		else
 		{
 			temp = *head;
-			while (temp->next
+			while (temp->next)
 					temp = temp->next;
 
 			temp->next = new_list;

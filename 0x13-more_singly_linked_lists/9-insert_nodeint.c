@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "lists.h"
+#include "list.h"
 
 /**
  * insert_nodeint_at_index - ...
