@@ -1,33 +1,42 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "lists.h"
+
 /**
- * find_listint_loop - finds the loop in a linked list
- * @head: linked list to search for
+ * add_nodeint_end - Adds a new node to the end of a linked list
+ * @head: The head of the linked list
+ * @n: The value to add to the end of the linked list
  *
- * Return: address of the node where the loop starts, or NULL
+ * Return: The address of the new element, or NULL it failed
  */
-listint_t *find_listint_loop(listint_t *head)
+listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	listint_t *slow = head;
-	listint_t *fast = head;
+	listint_t *new_list, *temp;
 
-	if (!head)
-		return (NULL);
-
-	while (slow && fast && fast->next)
+	if (head)
 	{
-		fast = fast->next->next;
-		slow = slow->next;
+		new_list = malloc(sizeof(listint_t));
+		if (new_list == NULL)
+			return (NULL);
 
-		if (fast == slow)
+		new_list->n = n;
+		new_list->next = NULL;
+
+		if (*head == NULL)
 		{
-			slow = head;
-			while (slow != fast)
-			{
-				slow = slow->next;
-				fast = fast->next;
-			}
-			return (fast);
+			*head = new_list;
+			return (*head);
+		}
+		else
+		{
+			temp = *head;
+			while (temp->next)
+				temp = temp->next;
+
+			temp->next = new_list;
+			return (temp);
 		}
 	}
+
 	return (NULL);
 }
